@@ -1,0 +1,64 @@
+{
+  "pages": [
+    
+    
+    "pages/music/music",
+    "pages/school/school",
+    "pages/index/index",
+    "pages/logs/logs",
+    "pages/history/history",
+    "pages/aichat/aichat",
+    "pages/AIface/AIface",
+    "pages/cartoon/cartoon",
+    "pages/Matting/Matting"
+  ],
+  "window": {
+    "navigationBarBackgroundColor": "#ffffff",
+    "navigationBarTextStyle": "black",
+    "backgroundColor": "#eeeeee",
+    "backgroundTextStyle": "light"
+  },
+  "plugins": {
+    "chatbot": {
+      "version": "1.1.14",
+      "provider": "wx8c631f7e9f2465e1"
+    }
+  },
+  "style": "v2",
+  "sitemapLocation": "sitemap.json",
+  "tabBar": {
+    "color": "#000000",
+    "list": [
+      {
+        "pagePath": "pages/index/index",
+        "text": "AI识别",
+        "iconPath": "pages/pic/img.png",
+        "selectedIconPath": "pages/pic/imgchosen.png"
+      },
+      {
+        "pagePath": "pages/school/school",
+        "text": "school",
+        "iconPath": "pages/pic/school.png",
+        "selectedIconPath": "pages/pic/schoolchosen.png"
+      },
+      {
+        "pagePath": "pages/AIface/AIface",
+        "text": "AI人脸",
+        "iconPath": "pages/pic/face_head.png",
+        "selectedIconPath": "pages/pic/face_head_chosen.png"
+      },
+      {
+        "pagePath": "pages/cartoon/cartoon",
+        "text": "二次元",
+        "iconPath": "pages/pic/cartoon.png",
+        "selectedIconPath": "pages/pic/cartoonchose.png"
+      },
+      {
+        "pagePath": "pages/Matting/Matting",
+        "text": "抠图",
+        "iconPath": "pages/pic/Matting.png",
+        "selectedIconPath": "pages/pic/Mattingchose.png"
+      }
+    ]
+  }
+}

@@ -1,0 +1,71 @@
+<!--index.wxml-->
+<view class="center" style="height:400px;background-color:{{backgroundcolor[colorindex]}}">
+<view id="left" style="height: 100%;width: 5px;position: fixed;background-color:{{backgroundcolor[colorindex]}};left: 0;top: 0;"></view>
+
+<view id="right" style="height: 100%;width: 5px;position: fixed;background-color:{{backgroundcolor[colorindex]}};right: 0;bottom: 0;"></view>
+
+<view id="top" style="height:5px ;width: 100%;position: fixed;background-color:{{backgroundcolor[colorindex]}};top: 0;left:0"></view>
+
+<view id="bottom" style="height:5px ;width: 100%;position: fixed;background-color:{{backgroundcolor[colorindex]}};bottom: 0;"></view>
+  <!-- <view class="userinfo">
+    <button wx:if="{{!hasUserInfo && canIUse}}" open-type="getUserInfo" bindgetuserinfo="getUserInfo"> 获取头像昵称 </button>
+    <block wx:else>
+      <image bindtap="bindViewTap" class="userinfo-avatar" src="{{userInfo.avatarUrl}}" mode="cover"></image>
+      <text class="userinfo-nickname">{{userInfo.nickName}}</text>
+    </block>
+  </view> -->
+  <view style="z-index: 3;">
+ <block wx:if="{{tempFilePaths!=null}}">
+ <block wx:for="{{tempFilePaths}}" wx:key="index">
+    <image class="aipic" src="{{item }}" />
+  </block>
+</block>
+<block wx:else>
+  <image class="aipic" src="../pic/header.jpg"></image></block>
+  
+  </view>
+  <view class="{{loading?'loadingtop':'loadtop'}}">
+  </view>
+  <view class="{{loading?'loadingdown':'loaddown'}}" style="background-color:{{backgroundcolor[colorindex]}}" >
+  </view>
+<button type="primary" size="default" loading="{{loading}}" 
+     bindtap="aipic"    >AI识别图片</button>
+
+</view>
+
+
+<view style="background-color:{{backgroundcolor[colorindex]}}">
+
+ <block style="text-align:center;padding:10px" wx:if="{{checkpic==3}}">
+识别结果--地标  ：{{landmark}}
+ </block>
+ <block wx:if="{{checkpic==1}}">
+ <block  wx:for="{{analysis}}" wx:for-item="item">
+ <view style="text-align:center;padding:10px">
+ <view >第{{index+1}}个识别结果</view>
+ <view ><text style="color:#aecf0f">种类</text>:{{item["root"]}}</view>
+ <view><text style="color:#719bff">名字</text>:{{item["keyword"]}}</view>     
+    <view wx:if="{{item['baike_info']['image_url']!=undefined}}"><text style="color:#bf6abee0">类似图片</text>:<image  src='{{item["baike_info"]["image_url"]}}'/></view>
+     <view wx:if="{{item['baike_info']['description']!=undefined}}"><text style="color:#dd1e81   ">详细描述</text>:{{item["baike_info"]["description"]}}</view></view>
+ </block></block>
+ <block wx:if="{{checkpic==2}}">
+ <block  wx:for="{{other}}" wx:for-item="item">
+ <view style="text-align:center;padding:10px">
+<view >第{{index+1}}个识别结果</view>
+ <view ><text style="color:#dd1e81">名字</text>:{{item["name"]}}</view>
+    <view wx:if="{{item['baike_info']['image_url']!=undefined}}"><text style="color:#719bff">类似图片</text>:<image  src='{{item["baike_info"]["image_url"]}}'/></view>
+     <view wx:if="{{item['baike_info']['description']!=undefined}}"><text style="color:#aecf0f">详细描述</text>:{{item["baike_info"]["description"]}}</view></view>
+ </block>
+ </block>
+ </view>
+ <view class="content" style="width: 150px; height: 150px; position: fixed; bottom: 30px; right: 80px; opacity: 0;">
+    <view style="width: 136px;height: 100px;/*! right: 66px; */position: relative;border: 1px solid black;border-radius: 20px;background:aliceblue;                z-index: 3;text-align: center;">
+
+    <view  style="margin: 0px;padding: 10px;">{{word}}</view>    
+    </view>
+    <view style="width: 53px;height: 64px;transform: rotate(35deg);position: relative;left: 86px;top: -75px;z-index: 0;">
+        <view style="width: 100%;height: 100%;border: 1px solid black;transform: skew(40deg);background:aliceblue;border: 1px solid black;"></view></view></view>
+
+<view style="position: fixed;right: 10px;bottom: 0;">
+<image bindtouchstart="tipshow" bindtouchend="tipclose" style="width: 140px;height: 100px;" src="../pic/tip1.png"/>
+</view>

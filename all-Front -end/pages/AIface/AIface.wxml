@@ -1,0 +1,176 @@
+<!--pages/AIface/AIface.wxml-->
+<view class="center" style="padding:0;height:auto;">
+<view class="tab-h">
+    <block wx:for='{{nav}}' wx:key='nav'>
+        <view class="tab-item {{currentTab==index?'active':''}}" data-current="{{index}}" bindtap="swichNav">
+            {{item.name}}
+        </view>
+    </block>
+</view>
+<view  bindtap="choose" style="height:200px;width:200px;padding:20px;">
+
+<block wx:if="{{pre!=undefined}}">
+ <block wx:for="{{pre}}" wx:key="index">
+ <view wx:if="{{currentTab==4}}" style="text-align:center;">美颜前:</view>
+<canvas type="2d" canvas-id="mycanvas"  id="mycanvas" style="position: absolute;width: 200px;height: 200px;"> </canvas>
+    <image bindload="imageLoad" style="height: 100%;width: 100%;position: relative;" src="{{item}}" />
+   
+  </block>
+  </block>
+
+  <block wx:else >
+  <view style="height:200px;width:200px;background-color:#ababab;">
+   
+  <image  style="height: 50%;width: 50%;position: relative;left: 25%;top: 25%;" src="../pic/face.png"/>
+  <text style="position: relative;left: -40px;top: 80px;">点击选择</text>
+  </view>
+  </block>
+  
+  </view>
+<view wx:if="{{currentTab==3}}">
+
+<view  bindtap="choose_template" style="height:200px;width:200px;padding:20px;left: 0;right: 0;margin: auto;">
+
+<block wx:if="{{template!=undefined}}">
+ <block wx:for="{{template}}" wx:key="index">
+
+    <image bindload="imageLoad" style="height: 100%;width: 100%;position: relative;" src="{{item}}" />
+   
+  </block>
+  </block>
+
+  <block wx:else >
+  <view style="height:200px;width:200px;background-color:#ababab;">
+   
+  <image  style="height: 50%;width: 50%;position: relative;left: 25%;top: 25%;" src="../pic/face.png"/>
+  <text style="position: relative;left: -40px;top: 80px;">选择模板</text>
+  </view>
+  </block>
+  </view>
+<view><button bindtap="ai_change_face" disabled="{{!(pre!=null&&template!=null)}}">确定</button></view>
+<view wx:if="{{change_ai_error!=null}}">{{change_ai_error}}</view>
+<view style="text-align: center;" wx:if="{{change_ai_base64!=null}}" >
+<view >长按保存</view>
+<image  bindlongpress="change_ai_save" src="{{'data:image/png;base64,'+change_ai_base64}}"></image></view>
+
+</view>
+
+
+
+
+
+<block wx:if="{{currentTab==0}}">
+  <swiper indicator-dots="true" style="width: 90%;height: 470px;text-align: center;">
+     <swiper-item  wx:if="{{detect1!=undefined}}">    
+ <block wx:for="{{detect1}}" wx:key="index">
+  <view>{{item}}</view>
+  </block>
+   </swiper-item>
+   <swiper-item  wx:if="{{detect2!=undefined}}">    
+ <block wx:for="{{detect2}}" wx:key="index">
+  <view>{{item}}</view>
+  </block>
+   </swiper-item>
+   <swiper-item  wx:if="{{detect3!=undefined}}">    
+ <block wx:for="{{detect3}}" wx:key="index">
+  <view>{{item}}</view>
+  </block>
+   </swiper-item>
+   <swiper-item  wx:if="{{detect4!=undefined}}">    
+ <block wx:for="{{detect4}}" wx:key="index">
+  <view>{{item}}</view>
+  </block>
+   </swiper-item>
+   <swiper-item  wx:if="{{detect5!=undefined}}">    
+ <block wx:for="{{detect5}}" wx:key="index">
+  <view>{{item}}</view>
+  </block>
+   </swiper-item>
+      </swiper>
+</block>
+
+<block wx:if="{{currentTab==1}}">
+  <swiper indicator-dots="true" style="width: 90%;height: 470px;text-align: center;">
+     <swiper-item  wx:if="{{skin1!=undefined}}">    
+ <block wx:for="{{skin1}}" wx:key="index">
+  <view>{{item}}</view>
+  </block>
+   </swiper-item>
+      </swiper>
+</block>
+<block wx:if="{{currentTab==2}}">
+  <swiper indicator-dots="true" style="width: 90%;height: 470px;text-align: center;">
+     <swiper-item  wx:if="{{facialfeatures1!=undefined}}">    
+ <block wx:for="{{facialfeatures1}}" wx:key="index">
+  <view>{{item}}</view>
+  </block>
+  
+   </swiper-item>
+      </swiper>
+</block>
+
+<block wx:if="{{currentTab==4}}">
+<view  wx:if="{{beautify_base64==undefined&&pre!=undefined}}">
+请重新选择图片
+</view>
+  <swiper indicator-dots="true" style="width: 90%;height: 470px;text-align: center;">
+     <swiper-item  wx:if="{{beautify_base64!=undefined}}">    
+ <block >
+ <view>美颜后:</view>
+ <view>长按保存</view>
+
+ <view class="{{timeout?'imgpre':'imgalt'}}">
+  </view>
+
+  <view>
+  <image bindlongpress="beautify_save" src="{{'data:image/png;base64,'+beautify_base64}}"></image>
+  </view>
+  </block>
+  
+   </swiper-item>
+
+      </swiper>
+</block>
+<view class="content" style="width: 10px; height: 150px; position: fixed; bottom: 50px; right: 80px; opacity: 0;">
+    <view style="width: 136px;height: 100px;/*! right: 66px; */position: relative;border: 1px solid black;border-radius: 20px;background:aliceblue;                z-index: 3;text-align: center;">
+
+    <view wx:if="{{pre==null}}" style="margin: 0px;padding: 10px;">我是海绵宝宝，欢迎你来到AI人脸</view>
+
+    <block wx:if="{{currentTab==0}}">
+    <view wx:if="{{pre!=null&&detect1.length!=1}}" style="margin: 0px;padding: 10px;">脸部识别成功！</view>
+    <view wx:if="{{pre!=null&&detect1.length==1}}" style="margin: 0px;padding: 10px;">脸部识别失败重新试试吧</view>
+    </block>
+
+   <block wx:if="{{currentTab==2}}">
+    <view wx:if="{{pre!=null&&facialfeatures1.length!=1}}" style="margin: 0px;padding: 10px;">五官分析成功！</view>
+     <view  wx:if="{{pre!=null&&facialfeatures1.length==1}}" style="margin: 0px;padding: 10px;">五官分析失败重新试试吧</view>
+    </block>
+
+    <block wx:if="{{currentTab==4}}">
+    <view wx:if="{{pre!=null&&beautify_base64!=null}}" style="margin: 0px;padding: 10px;">美颜处理成功！</view>
+     <view wx:if="{{pre!=null&&beautify_base64==null}}" style="margin: 0px;padding: 10px;">美颜处理失败重新试试吧</view>
+    </block>
+
+    <block wx:if="{{currentTab==3}}">
+     <view wx:if="{{pre!=null&&change_ai_base64!=null}}" style="margin: 0px;padding: 10px;">人脸融合成功！</view>
+      <block wx:else>
+      <view wx:if="{{pre!=null&&template==null}}" style="margin: 0px;padding: 10px;">选择模板进行融合吧~</view>
+      <view wx:if="{{pre!=null&&template!=null&&change_ai_error==null}}" style="margin: 0px;padding: 10px;">点击确定吧~</view>
+      <view wx:if="{{change_ai_error!=null}}" style="margin: 0px;padding: 10px;">人脸融合失败重新试试吧</view>
+      </block>
+     </block>
+     <block wx:if="{{currentTab==1}}">
+     <view wx:if="{{pre!=null&&skin1.length!=1}}" style="margin: 0px;padding: 10px;">皮肤分析成功!</view>
+     <view wx:if="{{pre!=null&&skin1.length==1}}" style="margin: 0px;padding: 10px;">皮肤分析失败重新试试吧</view>
+    </block>
+    
+    </view>
+    <view style="width: 53px;height: 64px;transform: rotate(35deg);position: relative;left: 86px;top: -75px;z-index: 0;">
+        <view style="width: 100%;height: 100%;border: 1px solid black;transform: skew(40deg);background:aliceblue;border: 1px solid black;"></view></view></view>
+
+<view style="position: fixed;right: -5px;bottom: 0;">
+<image bindtouchstart="tipshow" bindtouchend="tipclose" style="width: 150px;height: 150px;" src="../pic/tip.png"/>
+</view>
+
+</view>
+

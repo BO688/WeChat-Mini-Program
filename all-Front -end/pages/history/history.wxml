@@ -1,0 +1,8 @@
+<!--pages/history/history.wxml-->
+<view class="center" style="height:auto;padding:10px">
+点击直接放送↓
+<block wx:for="{{music}}" wx:for-item="log">
+    <text style="padding: 3px 0px 3px 0px;" bindtap="clickname" data-name="{{log}}">{{log}}</text>
+  </block>
+</view>
+

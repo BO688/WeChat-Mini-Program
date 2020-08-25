@@ -1,0 +1,50 @@
+/* pages/second.wxss */
+page{
+  background-color: #a1eeee;
+
+font-size: 19px
+}
+.history{
+width: 50px;
+position: relative;
+top: -95px;
+left: 175px;
+
+}
+.history image{
+  height: 50px;
+  width: 45px
+}
+.playstyle{
+width: 150px;height: 50px;
+}
+.playstyle image{
+   width: 50px;
+height: 50px;
+}
+.change{
+  position: relative;
+  left: -45%;width: 50px;
+  top: -45px;
+}
+.change image{
+
+  width: 50px;
+height: 35px;
+}
+.now{
+  color: red
+}
+@keyframes mymove
+{
+	
+	from {transform:rotate(0deg);
+    -ms-transform:rotate(0deg); /* IE 9 */
+    -webkit-transform:rotate(0deg); /* Safari and Chrome */}
+	to {transform:rotate(360deg);
+    -ms-transform:rotate(360deg); /* IE 9 */
+    -webkit-transform:rotate(360deg); /* Safari and Chrome */}}
+.musicpicstart{
+  animation: mymove 10s infinite;
+  animation-timing-function: linear;
+}

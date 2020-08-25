@@ -1,0 +1,6 @@
+<!--pages/aichat/aichat.wxml-->
+<view style="height: 100vh">
+   <chat bind:queryCallback="getQueryCallback" bind:backHome="goBackHome"
+      >
+   </chat>
+</view>

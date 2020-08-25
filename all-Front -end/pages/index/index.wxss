@@ -1,0 +1,99 @@
+/**index.wxss**/
+.userinfo {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.userinfo-avatar {
+  width: 128rpx;
+  height: 128rpx;
+  margin: 20rpx;
+  border-radius: 50%;
+}
+.aipic{
+width: 230px;height: 230px;border-radius: 50%;
+}
+.loadingtop{
+  background-color: #aecf0f;
+width: 240px;
+height: 240px;
+position: absolute;
+border-radius: 50%;
+top:20px;
+animation: mychangecolor 2s infinite ;
+animation-timing-function: linear;
+}
+.loadtop{
+  background-color: #aecf0f;
+width: 240px;
+height: 240px;
+position: absolute;
+border-radius: 50%;
+top:20px;
+}
+.loaddown{
+
+  position: absolute;
+top: 30px;
+width: 220px;
+height: 220px;
+z-index: 1;
+
+animation: mychangemove 5s infinite;
+animation-timing-function: linear;
+}
+.loadingdown{
+  position: absolute;
+top: 30px;
+width: 220px;
+height: 220px;
+
+
+z-index: 1;
+animation: mychangemove 3s infinite;
+animation-timing-function: linear;
+}
+.userinfo-nickname {
+  color: #aaa;
+}
+@keyframes mychangemove
+{
+	
+	0% {transform:rotate(0deg);
+    -ms-transform:rotate(0deg); /* IE 9 */
+    -webkit-transform:rotate(0deg); /* Safari and Chrome */
+    border-radius: 30%;
+    }
+50%{
+border-radius: 55%;
+}
+	100% {transform:rotate(360deg);
+    -ms-transform:rotate(360deg); /* IE 9 */
+    -webkit-transform:rotate(360deg); /* Safari and Chrome */
+    border-radius: 30%;
+    
+    }}
+    @keyframes mychangecolor
+{
+	
+	0% {
+    top: 20px;
+       width: 240px;
+ height: 240px;
+    background-color: red
+  }
+	25%{background-color: rebeccapurple}
+  50%{top: 25px;
+       width: 230px;
+ height: 230px;
+    background-color: yellow}
+  75%{background-color: blue}
+  100%{
+    top: 20px;
+       width: 240px;
+ height: 240px;
+    background-color: red}
+  }
+
+  
+

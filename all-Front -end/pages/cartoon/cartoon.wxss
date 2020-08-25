@@ -1,0 +1,26 @@
+/* pages/cartoon/cartoon.wxss */
+.result{
+  text-align: center
+}
+.imgpre{
+  width: 250px;
+        left: 0px;
+right: 0px;
+margin: auto;
+        animation: 7s imgpre infinite;
+        position: absolute;
+        z-index: 3;
+    }
+    .imgalt{
+       display: none;
+    }
+    @keyframes imgpre {
+
+        from{clip:rect(0px 250px 250px 0px);}
+        to{clip:rect(250px 250px 250px 0px);}
+    }
+    image{
+     width: 250px;
+height: 250px;
+
+    }

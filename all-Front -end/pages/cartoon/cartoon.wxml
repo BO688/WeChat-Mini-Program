@@ -1,0 +1,43 @@
+<!--pages/cartoon/cartoon.wxml-->
+<view class="center" style="height:350px">
+<view bindtap="choose" style="height:200px;width:200px;">
+<block wx:if="{{pre!=undefined}}">
+ <block wx:for="{{pre}}" wx:key="index">
+    <image style="height: 100%;width: 100%;position: relative;" src="{{item}}" />
+  </block></block>
+
+  <block wx:else >
+  <view style="height:200px;width:200px;background-color:#ababab;">
+  <image  style="height: 50%;width: 50%;position: relative;left: 25%;top: 25%;" src="../pic/camera2.png"/>
+  <text style="position: relative;left: -40px;top: 80px;">点击选择</text>
+  </view>
+  </block>
+</view>
+<button bindtap="sure"  style="color: white;background-color: #009fff;" disabled="{{!check}}">确定</button>
+
+</view>
+<view class="result">
+
+<block wx:if="{{base64!=undefined}}">
+<view>长按保存</view>
+<block wx:if="{{pre!=undefined}}">
+<view class="{{timeout?'imgpre':'imgalt'}}">
+
+ <block wx:for="{{pre}}" wx:key="index">
+    <image style="left: 0;right: 0;margin: auto;position: absolute;" src="{{item}}" />
+  </block></view>
+  </block>
+<image bindlongpress="save" src="{{'data:image/png;base64,'+base64}}"></image>
+</block>
+</view>
+<view class="content" style="width: 10px; height: 150px; position: fixed; bottom: 100px; right: 80px; opacity: 0;">
+    <view style="width: 136px;height: 100px;/*! right: 66px; */position: relative;border: 1px solid black;border-radius: 20px;background:aliceblue;                z-index: 3;text-align: center;">
+
+    <view  style="margin: 0px;padding: 10px;">{{word}}</view>    
+    </view>
+    <view style="width: 53px;height: 64px;transform: rotate(105deg);position: relative;left: 10px;top: -70px;z-index: 0;">
+        <view style="width: 100%;height: 100%;border: 1px solid black;transform: skew(40deg);background:aliceblue;border: 1px solid black;"></view></view></view>
+
+<view style="position: fixed;left: 10px;bottom: 0;">
+<image bindtouchstart="tipshow" bindtouchend="tipclose" style="width: 100px;height: 200px;" src="../pic/tip2.png"/>
+</view>

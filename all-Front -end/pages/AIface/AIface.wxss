@@ -1,0 +1,60 @@
+/* pages/AIface/AIface.wxss */
+page{
+  height: 700px
+}
+.tab-h{
+    /* position: fixed; */
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 30px;
+    line-height: 30px;
+    display: flex;
+    border-bottom: 1px solid #dddddd;
+    font-size: 16px;
+    background: #ffffff;
+}
+.tab-item{
+    width: 50%;
+    text-align: center;
+    position: relative;
+}
+.tab-h .active:after{
+    content: "";
+    display: block;
+    height: 4px;
+    width: 100%;
+    background:#4c84ff;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+}
+/* pages/cartoon/cartoon.wxss */
+.result{
+  text-align: center
+}
+.imgpre{
+  width: 250px;
+  height: 250px;
+        left: 0px;
+right: 0px;
+margin: auto;
+        animation: 7s imgpre infinite;
+        position: absolute;
+        z-index: 3;
+        background-color: #eeaea6
+    }
+    .imgalt{
+       display: none;
+    }
+    @keyframes imgpre {
+
+        from{clip:rect(0px 250px 250px 0px);}
+        to{clip:rect(250px 250px 250px 0px);}
+    }
+    image{
+     width: 250px;
+height: 250px;
+
+    }

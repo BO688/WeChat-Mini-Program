@@ -1,0 +1,58 @@
+<!--pages/second.wxml-->
+<view style="padding: 40rpx 0;" class="center">
+<view>播放音乐！</view>
+<text style="display:none">{{timepiece}}{{controlstepclick}}</text>
+<view>正在播放{{nowmusic+1}}.{{musiclist[nowmusic]}}</view>
+<view wx:if="{{musiccache}}">正在缓冲，请稍等！</view>
+<view style="width:250rpx;height:250rpx;position:relative;" >
+  <image bindtap="playclick" class="{{isplay?'musicpicstart':''}}" style="width:100%;height:100%;border-radius:50%;" src='../pic/header.jpg' />
+</view>
+
+<view class="playstyle">
+  <image  bindtap="last" src="../pic/step-backward.png"/>
+  <image bindtap="playclick" wx:if="{{!isplay}}"  src="../pic/play-circle.png"/>
+  <image bindtap="playclick" wx:if="{{isplay}}"  src="../pic/time_out.png"/>
+  <image bindtap="next"   src="../pic/step-forward.png"/>
+  
+  
+  <view class="change">
+  <image  bindtap="playchange" wx:if="{{iscircle}}"  src="../pic/singlecircle.png"/>
+<image  bindtap="playchange" wx:if="{{!iscircle}}"  src="../pic/circle.png"/>
+  </view>
+  <view class="history" bindtap="history"><image   src="../pic/more.png" /></view>
+  </view>
+ 
+  
+<slider style="margin: 10px;padding: 10px;width:80%;" bindchange="sliderChange" step="2"  value="{{progress}}"  max="{{duration}}"  selected-color="#ff5e5e"/>
+<view wx:if="{{!isplay}}">
+我的歌单
+</view>
+<view  style="padding: 10px;width: 100%;height: 200px">
+<scroll-view scroll-y="true"  bindscrolltoupper="totoporend" bindscrolltolower="totoporend"  scroll-into-view="{{isplay?'m'+timepiece:'songid'+nowmusic}}"   style="padding: 0px 5% 0px 5%;width: 90%;text-align:center;height:200px">
+<text id="songidtop">\n</text><text>\n</text><text>\n</text>
+<block wx:if="{{isplay}}">
+<block   wx:for="{{lrccontent}}" wx:for-item="log">
+    <text class="{{index==timepiece?'now':''}}"  id="m{{index}}"  style="padding: 3px 0px 3px 0px;display:block">{{log}}</text>
+  </block></block>
+<block wx:else>
+<block  wx:for="{{musiclist}}" wx:for-item="log">
+    <text  bindtap="clickname" class="{{index==nowmusic?'now':''}}"  id="songid{{index}}" data-name="{{log}}" style="display:block;padding: 3px 0px 3px 0px;">{{index + 1}}. {{log}}</text>
+  </block>
+  </block>
+  <text>\n</text><text>\n</text><text id="songiddown">\n</text>
+</scroll-view>
+
+<view style="background:linear-gradient(#a1eeee,transparent);background-position: center;background-blend-mode: normal;position: relative;height: 20px;width: 100%;top: -101%;"></view>
+<view style="background:linear-gradient(transparent,#a1eeee);background-position: center;background-blend-mode: normal;position: relative;height: 20px;width: 100%;top: -20%;"></view>
+
+</view>
+<view id="showcontrol" style="-webkit-transform: scale(0,0); background-color: #f9b636b5;width: 200px;height: 100px;border-radius: 100px 100px 0 0;position: absolute;bottom: 0;right: -100px;" ><view bindtap="controlstep" style="width: 40px;position: relative;left: 55px;top: 15px;" data-name="add"><image style="transform:rotate(180deg);width: 40px;height: 40px;" src="../pic/lefthead.png"/></view><view
+bindtap="controlstep" style="width: 40px;position: relative;top: 10px;left: 15px;" data-name="sub"><image style="transform:rotate(85deg);width: 40px;height: 40px;" src="../pic/righthead.png"/></view></view>
+<image  bindtap="showcontrol" style="width: 30px;height: 35px;position: absolute;bottom: 3px;right: 10px;" src="../pic/detail.png"/>
+
+<!-- 
+<button type="primary" bindtap="btnClick4">录音</button>
+<button type="primary" bindtap="btnClick5">录音播放</button>
+<button type="primary" bindtap="btnClick6">暂停录音播放</button>
+<button type="primary" bindtap="btnClick7">停止录音播放</button> -->
+</view>
