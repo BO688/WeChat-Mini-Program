@@ -1,0 +1,45 @@
+/**app.wxss**/
+.center {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  padding: 25px 0;
+  box-sizing: border-box;
+} 
+page{
+  font-size: 20px;
+  height: 100%;
+  /* background-color: #eeaea6 */
+}
+.buttonok{
+  color: white;
+  background: linear-gradient(90deg,#03a9f4,#f441a5,#ffeb3b,#03a9f4);
+background-size: 400%;
+  animation: sun 8s infinite; 
+}
+.buttonokbg{
+  position: absolute;
+  background: linear-gradient(90deg,#03a9f4,#f441a5,#ffeb3b,#03a9f4);
+background-size: 400%;
+  animation: sun 8s infinite;
+  filter: blur(10px);
+  z-index: -1;
+  left: 0;
+right: 0;
+}
+.buttonnobg{
+  position: absolute;
+filter: blur(10px);
+z-index: -1;
+left: 0;
+right: 0;
+
+}
+
+ @keyframes sun{
+100%{
+  background-position: -400% 0;
+}
+ }

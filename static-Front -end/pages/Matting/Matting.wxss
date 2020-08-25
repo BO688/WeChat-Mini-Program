@@ -1,0 +1,2 @@
+/* pages/Matting/Matting.wxss */
+@import "../cartoon/cartoon.wxss"

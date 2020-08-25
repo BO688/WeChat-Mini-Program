@@ -1,0 +1,14 @@
+<!--pages/Test/Test.wxml-->
+
+
+<block wx:if="{{imagePath!=null}}" >
+<image style='width:{{canvasWidth}}px;height:{{canvasHeight}}px' src="{{imagePath}}"></image>
+<view style="position: absolute;botton: ;left: 0;right: 0;margin: auto;bottom: 7%;">
+<button   bindtap="again" style="margin-bottom:10px;">再拍一张</button>
+
+<button  bindtap="save" open-type='share'>保存并分享</button></view>
+</block>
+<block wx:else>
+<canvas style='opacity:0;width:{{canvasWidth}}px;height:{{canvasHeight}}px' canvas-id='myCanvas'></canvas>
+</block>
+

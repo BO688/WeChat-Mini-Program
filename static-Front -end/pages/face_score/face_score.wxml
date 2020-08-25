@@ -1,0 +1,76 @@
+<view>
+
+  <view class="center" style="padding:0;height:auto;">
+
+    <view bindtap="choose" style="height:200px;width:200px;padding:20px;">
+      
+
+          <image wx:if="{{pre.length>0}}" style="height: 100%;width: 100%;position: relative;" src="{{pre}}" />
+
+
+      <block wx:else>
+        <view style="height:200px;width:200px;background-color:#ababab;">
+
+          <image style="height: 50%;width: 50%;position: relative;left: 25%;top: 25%;" src="../pic/face.png" />
+          <text style="position: relative;left: -40px;top: 80px;">点击选择</text>
+        </view>
+      </block>
+
+    </view>
+    <view style="margin:50px;">
+    <button class="{{detect_check?'buttonokbg':'buttonnobg'}}" disabled="{{!detect_check}}">
+    1
+      </button>
+      
+      <button class="{{detect_check?'buttonok':''}}" bindtap="getPoster" disabled="{{!detect_check}}">
+        查看测试结果
+      </button>
+      <view style="height:20px;"></view>
+       <button class="{{detect_check?'buttonokbg':'buttonnobg'}}"  disabled="{{!detect_check}}">
+     1
+      </button>
+      <button class="{{detect_check?'buttonok':''}}" bindtap="show" disabled="{{!beautify_check||!detect_check}}">
+        预见更好的自己
+      </button>
+     
+    </view>
+
+  </view>
+  <view id="bg" bindtap="tipclose">
+  </view>
+
+
+  <view id="word" bindtap="tipclose">
+    <text wx:if="{{tip}}">
+报告生成成功！
+</text>
+    <image wx:if="{{tip}}" src="../pic/tip.png" style="width: 70px;height: 70px;padding: 30px;"></image>
+  </view>
+  <view id="show" bindtap="show_close">
+  
+    <block wx:if="{{pre!=undefined}}">
+      
+        <view class="{{timeout?'imgpre':'imgalt'}}">
+          <image style="height: 100%;width: 100%;position: relative;" src="{{pre}}" />
+        </view>
+     
+    </block>
+
+    <image bindlongtap="beautify_save" src="{{'data:image/png;base64,'+beautify_base64}}" id="show_image" />
+    <view wx:if="{{show}}" style="color:white">這是更好的你</view>
+    <view wx:if="{{show}}" style="color:white">長按保存</view>
+  </view>
+  <view id="bg_show" bindtap="show_close">
+  </view>
+
+</view>
+<image bindtap="history_list_control" style="width: 50px;height: 50px;position: absolute;left: 1%;top: 1%;z-index:6;" src="../pic/history.png" />
+  <view id="history" style="position: absolute;background:linear-gradient(90deg,#a5f6d7,#ab88e4);z-index: 5;border: 1px solid white;height:{{(history_list.length+1)*55+60}}px;width: 52px;top:-{{(history_list.length+1)*55+62}}px">
+    <view style="border: 1px solid white;width: 50px;height: 50px;position: relative;left: 1%;top:60px;text-align: center;">
+        历史记录
+      </view>
+    <block wx:for="{{history_list}}" wx:key="index">
+      <view style="border-radius: 50%;border: 1px solid white;width: 50px;height: 50px;position: relative;left: 1%;top:60px">
+        <image style="border-radius: 50%;width:100%;height:100%;" bindtap="history_show" data-index="{{index}}" src="{{'data:image/png;base64,'+item.pic}}" />
+      </view>
+    </block></view>

@@ -1,0 +1,62 @@
+<image bindtap="history_list_control" style="width: 50px;height: 50px;position: absolute;left: 1%;top: 1%;z-index:6;" src="../pic/history.png" />
+  <view id="history" style="position: absolute;background:linear-gradient(90deg,#a5f6d7,#ab88e4);z-index: 5;border: 1px solid white;height:{{(history_list.length+1)*55+60}}px;width: 52px;top:-{{(history_list.length+1)*55+62}}px">
+    <view style="border: 1px solid white;width: 50px;height: 50px;position: relative;left: 1%;top:60px;text-align: center;">
+        历史记录
+      </view>
+    <block wx:for="{{history_list}}" wx:key="index">
+      <view style="border-radius: 50%;border: 1px solid white;width: 50px;height: 50px;position: relative;left: 1%;top:60px">
+        <image style="border-radius: 50%;width:100%;height:100%;" bindtap="history_show" data-index="{{index}}" src="{{'data:image/png;base64,'+item.pic}}" />
+      </view>
+    </block></view>
+
+<view class="center" style="padding:0;height:auto;">
+  <view bindtap="choose" style="height:200px;width:200px;padding:20px;">
+
+        <image wx:if="{{pre.length>0}}" style="height: 100%;width: 100%;position: relative;" src="{{pre}}" />
+    <block wx:else>
+      <view style="height:200px;width:200px;background-color:#ababab;">
+        <image style="height: 50%;width: 50%;position: relative;left: 25%;top: 25%;" src="../pic/face.png" />
+        <text style="position: relative;left: -40px;top: 80px;">点击选择</text>
+      </view>
+    </block>
+  </view>
+</view>
+<view class="tab-h">
+  <block wx:for='{{nav}}' wx:key='nav'>
+    <view class="tab-item {{currentTab==index?'active':''}}" data-current="{{index}}" bindtap="swichNav">
+      {{item.name}}
+    </view>
+  </block>
+</view>
+<swiper  indicator-dots="true" style="margin:auto;width: 90%;height: 650px;text-align: center;" current="{{currentTab}}">
+  <swiper-item wx:if="{{facialfeatures1!=undefined}}">
+    <block wx:for="{{facialfeatures1}}" wx:key="index">
+      <view class="{{index==0?'header':''}}">{{item}}</view>
+    </block>
+    <view>
+      <button  wx:if="{{facialfeatures_check}}" class="{{facialfeatures_check?'buttonokbg':'buttonnobg'}}" >1</button>
+        <button class="{{facialfeatures_check?'buttonok':''}}" wx:if="{{facialfeatures_check}}" style="margin-top: 20px;" bindtap="getPosters" data-kind="facialfeatures">
+      生成五官分析报告
+    </button>
+   
+
+    </view>
+
+  </swiper-item>
+  <swiper-item wx:if="{{skin1!=undefined}}">
+    <block wx:for="{{skin1}}" wx:key="index">
+      <view class="{{index==0?'header':''}}">{{item}}</view>
+    </block>
+    <view>
+      <button  class="{{skin_check?'buttonokbg':'buttonnobg'}}" wx:if="{{skin_check}}" >
+     1
+    </button>
+        <button  class="{{skin_check?'buttonok':''}}" wx:if="{{skin_check}}" style="margin-top: 20px;" bindtap="getPosters" data-kind="skin">
+      生成皮肤分析报告
+    </button>
+      
+    </view>
+
+    
+  </swiper-item>
+</swiper>

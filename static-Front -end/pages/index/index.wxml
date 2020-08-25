@@ -1,0 +1,128 @@
+<!-- <view wx:if="{{!ready}}" class="loading">
+    <view class="pic">
+        <i></i>
+        <i></i>
+        <i></i>
+        <i></i>
+        <i></i>
+    </view>
+</view> -->
+
+<view style="height:cover;">
+  <swiper id="move3" style="position:relative" indicator-dots="true" autoplay="true" circular="true">
+    <swiper-item bindtap="welcome">
+      <image style="width:100%;height:100%;" src="../pic/family.jpg" />
+    </swiper-item>
+    <swiper-item bindtap="tipshow">
+      <image style="width:100%;height:100%;" src="../pic/indexTIP.png" />
+    </swiper-item>
+    <swiper-item bindtap='showcomment'>
+      <image style="width:100%;height:100%;" src="../pic/question.png" />
+    </swiper-item>
+  </swiper>
+
+<view id="comment" style="display:{{comment_show?'block':'none'}};text-align:center;">
+<button bindtap="closecomment" style="width: 85px;top: 2%;position: fixed;z-index: 12;right: 3%;">关闭</button>
+<textarea style="margin:auto;background-color: rgba(240,240,240,0.9);" bindinput="checkComment" bindblur="checkComment" fixed="true" maxlength="100" placeholder="输入你想说的吧">
+</textarea>
+
+<radio-group bindchange="checkComment">
+<radio value="不喜欢">不喜欢</radio>
+<radio value="一般般">一般般</radio>
+<radio value="喜欢">喜欢</radio>
+</radio-group>
+<button disabled="{{!comment_check}}" style="top: 40px;" bindtap="sentComment">提交</button>
+</view>
+<image style="display:{{comment_show?'block':'none'}}" id="commentBG" src="../pic/questionbg.png"></image>
+
+
+
+
+
+
+  <!-- 第一个 -->
+  <view style="height:20px"></view>
+  <view id="move1" bindtap="toAiJudge"   style="left:5%;text-align: center;position: relative;height: 100px;width:90%;">
+    <view id="content1" style="position: absolute;z-index: 5;width: 100%;height: 100%">
+      <span style="font-size: 20px;color: white;position: relative;left: 10px;top:10px;">拍一拍　　认识Ta </span>
+      <word style="display:block;position: relative;left: -15px;">
+        <span style="background-image:-webkit-gradient( linear, left top, right top,color-stop(0, #fbff16),color-stop(1, #ff3761));color: transparent;-webkit-background-clip: text;-ms-background-clip: text;font-size: 50px;display:inline list-item;">AI</span>
+        <span style="color:white;position: relative;font-size: 20px;bottom: 8px">识图</span>
+        <image style="width: 60px;height: 60px;position: relative;left: 30px;" src="../pic/cat.png" />
+      </word>
+
+    </view>
+    <view id="bg1"></view></view>
+  <!-- 第二个 -->
+  <view style="height:20px"></view>
+
+  <view id="move2" bindtap="toFace_score"  style="left: 5%;text-align: center;position: relative;height: 100px;width:90%;">
+
+    <view id="content2" style="position: absolute;z-index: 5;width: 100%;height: 100%">
+      <span style="font-size: 20px;color: white;position: relative;left: -10px;top:10px"> 看看你能得多少分 </span>
+      <word style="display:block;position: relative;left:0px;">
+        <image style="width: 60px;height: 60px;position: relative;left: -5px;top:10px" src="../pic/BX.png" />
+        <span style="background-image:-webkit-gradient( linear, left top, right top,color-stop(0, #ff35fa),color-stop(1, #4b54ff));color: transparent;-webkit-background-clip: text;-ms-background-clip: text;font-size: 40px;display:inline list-item;">颜值</span>
+        <span style="color:white;position: relative;font-size: 20px;bottom: 8px">测试</span>
+
+      </word>
+
+    </view>
+    <view id="bg2"></view>
+    </view>
+  <!-- 第三个 -->
+  <view style="height:20px"></view>
+  <view id="move4" bindtap="toCartoon"  style="left:5%;text-align: center;position: relative;height: 100px;width:90%;">
+    <view id="content3" style="position: absolute;z-index: 5;width: 100%;height: 100%">
+      <span style="font-size: 20px;color: white;position: relative;top:10px;left: 10px;">一键生成你的专属</span>
+      <word style="bottom:5px;display:block;position: relative;left:-15px;">
+        <span style="background-image:-webkit-gradient( linear, left top, right top,color-stop(0, #2391ff),color-stop(1, #ff680a));color: transparent;-webkit-background-clip: text;-ms-background-clip: text;font-size: 40px;display:inline list-item;">动漫</span>
+        <span style="color:white;position: relative;font-size: 20px;bottom: 8px">头像</span>
+        <image style="width: 65px;height: 65px;position: relative;left: 30px;top:10px;" src="../pic/bob.png" />
+      </word>
+
+    </view>
+    <view id="bg3"></view></view>
+  <!-- 第四个 -->
+  <view style="height:20px"></view>
+  <view id="move5" bindtap="toSkin"  style="left: 5%;text-align: center;position: relative;height: 100px;width:90%;">
+
+    <view id="content2" style="position: absolute;z-index: 5;width: 100%;height: 100%">
+      <span style="font-size: 20px;color: white;position: relative;left: -10px;top:10px"> 看清你的脸 </span>
+      <word style="display:block;position: relative;left:0px;top:5px;">
+        <image style="width: 50px;height: 50px;position: relative;left: -5px;top:10px" src="../pic/Face_score.png" />
+        <span style="background-image:-webkit-gradient( linear, left top, right top,color-stop(0, #ff9191),color-stop(1, #758cea));color: transparent;-webkit-background-clip: text;-ms-background-clip: text;font-size: 40px;display:inline list-item;">脸部</span>
+        <span style="color:white;position: relative;font-size: 20px;bottom: 8px">分析</span>
+
+      </word>
+
+    </view>
+    <view id="bg4"></view>
+    </view>
+  <!-- 第五 -->
+  <view style="height:20px"></view>
+  <view id="move6" bindtap="toMerge"   style="left:5%;text-align: center;position: relative;height: 100px;width:90%;">
+    <view id="content3" style="position: absolute;z-index: 5;width: 100%;height: 100%">
+      <span style="font-size: 20px;color: white;position: relative;top:10px;left: 10px;">Ta和你的脸会有什么结果</span>
+      <word style="bottom:-10px;display:block;position: relative;left:-15px;">
+        <span style="background-image:-webkit-gradient( linear, left top, right top,color-stop(0, #edcdff),color-stop(1, #4691ff));color: transparent;-webkit-background-clip: text;-ms-background-clip: text;font-size: 40px;display:inline list-item;">人脸</span>
+        <span style="color:white;position: relative;font-size: 20px;bottom: 8px">融合</span>
+        <image style="width: 50px;height: 50px;position: relative;left: 30px;" src="../pic/tool.png" />
+      </word>
+
+    </view>
+    <view id="bg5"></view>
+    
+  </view>
+  <view style="height:20px"></view>
+</view>
+ <view id="bg" bindtap="welcome">
+  </view>
+  <image id="welcome" bindtap="welcome" style="display:{{welcome?'block':'none'}}"  src="../pic/welcome.jpg"></image>
+  <image bindtap="tipshow" id="tipbg" src="../pic/TIPbg.png"></image>
+ 
+    <view id="photos" >
+     <image style="width:{{width*0.6}}px;height:0;transform:rotateY(0deg) translateZ(1000px)" bindtap="tipshow" id="tip1" src="../pic/1.png"></image>
+   <image style="width:{{width*0.6}}px;height:0;transform:rotateY(120deg) translateZ(1000px)" bindtap="tipshow" id="tip2" src="../pic/2.png"></image>
+    <image style="width:{{width*0.6}}px;height:0;transform:rotateY(240deg) translateZ(1000px)" bindtap="tipshow" id="tip3" src="../pic/3.png"></image>
+    </view>

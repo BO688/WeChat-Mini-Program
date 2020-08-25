@@ -1,0 +1,61 @@
+<view>
+<image bindtap="history_list_control" style="width: 50px;height: 50px;position: absolute;left: 1%;top: 1%;z-index:6;" src="../pic/history.png" />
+  <view id="history" style="position: absolute;background:linear-gradient(90deg,#a5f6d7,#ab88e4);z-index: 5;border: 1px solid white;height:{{(history_list.length+1)*55+60}}px;width: 52px;top:-{{(history_list.length+1)*55+62}}px">
+    <view style="border: 1px solid white;width: 50px;height: 50px;position: relative;left: 1%;top:60px;text-align: center;">
+        历史记录
+      </view>
+    <block wx:for="{{history_list}}" wx:key="index">
+      <view style="border-radius: 50%;border: 1px solid white;width: 50px;height: 50px;position: relative;left: 1%;top:60px">
+        <image style="border-radius: 50%;width:100%;height:100%;" bindtap="history_show" data-index="{{index}}" src="{{'data:image/png;base64,'+item.result}}" />
+      </view>
+    </block></view>
+  <view class="center" style="padding:0;height:auto;">
+
+    <view id="pre" bindtap="choose" style="height:200px;width:200px;padding:20px;position:absolute;top:0px;">
+
+      
+
+          <image wx:if="{{pre.length>0}}" style="height: 100%;width: 100%;position: relative;" src="{{pre}}" />
+      <block wx:else>
+        <view style="height:200px;width:200px;background-color:#ababab;">
+          <image style="height: 50%;width: 50%;position: relative;left: 25%;top: 25%;" src="../pic/face.png" />
+          <text style="position: relative;left: -40px;top: 80px;">选择人脸</text>
+        </view>
+      </block>
+
+    </view>
+    <view id="template" style="position:absolute;top:250px;">
+
+      <view bindtap="choose_template" style="height:200px;width:200px;padding:20px;left: 0;right: 0;margin: auto;">
+      
+          <image wx:if="{{template.length>0}}" style="height: 100%;width: 100%;position: relative;" src="{{template}}" />
+       
+
+        <block wx:else>
+          <view style="height:200px;width:200px;background-color:#ababab;">
+
+            <image style="height: 50%;width: 50%;position: relative;left: 25%;top: 25%;" src="../pic/face.png" />
+            <text style="position: relative;left: -40px;top: 80px;">选择模板</text>
+          </view>
+        </block>
+      </view>
+      <!-- <view style="position: absolute;left: 0;right: 0;margin: auto;top: 500px;"> -->
+      <view>
+      <button  class="{{(pre_check&&template_check)?'buttonokbg':'buttonnobg'}}"  >1</button>
+        <button class="{{(pre_check&&template_check)?'buttonok':''}}" bindtap="ai_change_face" disabled="{{!(pre_check&&template_check)}}">确定</button>
+      </view>
+      
+  </view>
+      <view id="result"  style="display:{{timeout?'block':'none'}};opactiy:0;text-align: center;text-align: center;position: absolute;top: 150px;" wx:if="{{change_ai_base64!=null}}">
+        <image  src="{{'data:image/png;base64,'+change_ai_base64}}"></image>
+        <view style="margin-top:10px;">
+ <button  class="buttonokbg" >1</button>
+        <button  class="buttonok" bindtap="change_ai_save"  >保存图片</button>
+        <view style="height:20px;"></view>
+<button  class="buttonokbg" >1</button>
+        <button  class="buttonok" bindtap="tipclose"  >拆开</button>
+        </view>
+
+      </view>
+    </view>
+</view>
